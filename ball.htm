@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>canball</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+    <canvas id="canvas" width="414" height="736"></canvas>
+    <script>
+        
+        var canvas = document.getElementById("canvas");        
+        var MyAudio = Audio
+        var module = {}
+        function require() { }
+        var wx = {}
+        var wxOpenDataContext = {}
+        wxOpenDataContext.postMessage = function () { }
+        wxOpenDataContext.canvas = document.createElement('canvas');
+        wxOpenDataContext.canvas.width = window.innerWidth * window.devicePixelRatio;
+        wxOpenDataContext.canvas.height = window.innerHeight * window.devicePixelRatio;
+        console.log('wx shareCanvas', wxOpenDataContext.canvas.width, wxOpenDataContext.canvas.height, window.devicePixelRatio)
+        wx.getOpenDataContext = function () {
+            return wxOpenDataContext;
+        }
+        wx.getSharedCanvas = function () {
+            return wxOpenDataContext.canvas;
+        }
+        wx.createCanvas = function () {
+            return document.createElement('canvas');
+        }
+        wx.getSystemInfoSync= function () {
+            return {
+                devicePixelRatio:1, windowWidth:414, windowHeight:736
+            }
+        }
+        window.openDataContext = wx.getOpenDataContext();
+        window.sharedCanvas = openDataContext.canvas;
+
+        localStorage.__proto__.getNumber = function(key, defaultVal){
+            const value = localStorage.getItem(key);
+            return value === null ? defaultVal : Number(value);
+        }
+        wx.showToast = function(){}
+        window.showAd = function (funcOk, funcCancel, funcEnd) {funcOk()}        
+    </script>
+
+<script src="js/libs/pixi.js"></script>
+<script src="js/libs/p2.min.js"></script>
+<script src="js/libs/phaser-split.js"></script>
+
+    <script src="js/main.js"></script>
+<script>
+</script>
+</body>
+
+</html>
